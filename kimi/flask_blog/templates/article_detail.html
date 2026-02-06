@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Flask博客{% endblock %}
+
+{% block content %}
+<div class="article-detail">
+    <article class="card">
+        <header class="article-header">
+            <h1>{{ article.title }}</h1>
+            <div class="article-meta">
+                <span>作者: {{ article.author.username }}</span>
+                <span>分类: {{ article.category.name }}</span>
+                <span>发布时间: {{ article.created_at.strftime('%Y-%m-%d %H:%M') }}</span>
+                <span>浏览: {{ article.views }}次</span>
+            </div>
+        </header>
+        
+        <div class="article-content">
+            {{ article.content }}
+        </div>
+        
+        <footer class="article-footer">
+            <p>最后更新时间: {{ article.updated_at.strftime('%Y-%m-%d %H:%M') }}</p>
+        </footer>
+    </article>
+</div>
+
+<style>
+.article-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.article-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.article-header h1 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-size: 2rem;
+}
+
+.article-meta {
+    display: flex;
+    gap: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.article-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 2rem;
+}
+
+.article-content p {
+    margin-bottom: 1.5rem;
+}
+
+.article-footer {
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
